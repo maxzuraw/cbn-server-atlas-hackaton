@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CompileFolder</key>
+	<string>/Users/maxz/Documents/projekty/cbn-server/docs</string>
+	<key>NotesScaleFactor</key>
+	<real>1</real>
+	<key>ToCIndent</key>
+	<real>36</real>
+	<key>ToCRightMargin</key>
+	<real>451</real>
+	<key>ToCUsePageWidth</key>
+	<true/>
+	<key>binderSplitFrames</key>
+	<array>
+		<string>{{0, 0}, {265, 781}}</string>
+		<string>{{266, 0}, {1174, 781}}</string>
+	</array>
+	<key>bookmarksSelectionInfo</key>
+	<dict>
+		<key>02FD57D6-63DF-476E-A563-460C640F9F1C</key>
+		<dict>
+			<key>Row</key>
+			<integer>-1</integer>
+		</dict>
+		<key>0C0F4B3C-E58B-40EA-ACAA-EB43790E1064</key>
+		<dict>
+			<key>Row</key>
+			<integer>-1</integer>
+		</dict>
+		<key>2480364E-53B1-424E-BEC4-B8E71C93B974</key>
+		<dict>
+			<key>Row</key>
+			<integer>-1</integer>
+		</dict>
+		<key>791BDF22-6D5E-4A6B-9BEE-F8BF94808633</key>
+		<dict>
+			<key>Row</key>
+			<integer>-1</integer>
+		</dict>
+		<key>A42E6483-B752-455D-9F82-1EACCB90E0A9</key>
+		<dict>
+			<key>Row</key>
+			<integer>-1</integer>
+		</dict>
+		<key>CE8E8584-5FF1-40FA-8D36-89C0EABA3722</key>
+		<dict>
+			<key>Row</key>
+			<integer>-1</integer>
+		</dict>
+	</dict>
+	<key>collectionsRepresentedBinderDocumentsInfo</key>
+	<dict>
+		<key>MainID</key>
+		<string></string>
+		<key>SupportingID</key>
+		<string></string>
+	</dict>
+	<key>editorSplitFrames</key>
+	<array>
+		<string>{{587, 0}, {587, 751}}</string>
+	</array>
+	<key>fullScreenBackgroundFade</key>
+	<real>1</real>
+	<key>fullScreenHorizontalPaperPosition</key>
+	<integer>2</integer>
+	<key>fullScreenInspectorMode</key>
+	<integer>0</integer>
+	<key>fullScreenInspectorVisible</key>
+	<false/>
+	<key>fullScreenPaperHeight</key>
+	<integer>-1</integer>
+	<key>fullScreenPaperWidth</key>
+	<integer>850</integer>
+	<key>fullScreenVerticalPaperPosition</key>
+	<integer>2</integer>
+	<key>inspectorSplitFrames</key>
+	<array>
+		<string>{{0, 0}, {288, 771}}</string>
+	</array>
+	<key>inspectorWidth</key>
+	<real>245</real>
+	<key>lastDocumentSplitType</key>
+	<integer>1</integer>
+	<key>mainDocumentEditor.scrollRect</key>
+	<string>{{0, 0}, {620, 397.14285714285711}}</string>
+	<key>mainDocumentEditor.textEditorState</key>
+	<dict>
+		<key>textScaleFactor</key>
+		<real>1.75</real>
+	</dict>
+	<key>mainWindowFrame</key>
+	<string>0 66 1440 809 0 0 1440 875 </string>
+	<key>supportingDocumentEditor.scrollRect</key>
+	<string>{{0, 0}, {620, 294}}</string>
+	<key>supportingDocumentViewIsCurrent</key>
+	<false/>
+</dict>
+</plist>

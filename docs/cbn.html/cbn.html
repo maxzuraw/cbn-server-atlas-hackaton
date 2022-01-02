@@ -1,0 +1,379 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title>cbn</title>
+  <meta name="CreationTime" content="2022-01-02T15:59:29Z">
+  <meta name="ModificationTime" content="2022-01-02T15:59:29Z">
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2113.2">
+  <style type="text/css">
+    p.p1 {margin: 13.0px 0.0px 0.0px 0.0px; font: 28.0px Palatino}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; text-indent: 18.0px; font: 13.0px Palatino; min-height: 18.0px}
+    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; text-indent: 18.0px; font: 13.0px Palatino}
+    p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px Palatino; min-height: 18.0px}
+    p.p7 {margin: 0.0px 0.0px 0.0px 36.0px; text-indent: -36.0px; font: 13.0px Palatino; min-height: 18.0px}
+    p.p9 {margin: 0.0px 0.0px 0.0px 36.0px; font: 11.0px Helvetica}
+    p.p11 {margin: 0.0px 0.0px 0.0px 36.0px; font: 11.0px Helvetica; min-height: 13.0px}
+    p.p12 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p13 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Menlo; color: #1d00ff; -webkit-text-stroke: #1d00ff}
+    p.p14 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Menlo; -webkit-text-stroke: #000000}
+    p.p15 {margin: 0.0px 0.0px 0.0px 36.0px; font: 11.0px Helvetica; -webkit-text-stroke: #000000; min-height: 13.0px}
+    p.p16 {margin: 0.0px 0.0px 0.0px 0.0px; text-indent: 18.0px; font: 13.0px Palatino; -webkit-text-stroke: #000000}
+    p.p17 {margin: 0.0px 0.0px 0.0px 0.0px; text-indent: 18.0px; font: 13.0px Palatino; -webkit-text-stroke: #000000; min-height: 18.0px}
+    p.p19 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; -webkit-text-stroke: #000000}
+    p.p21 {margin: 0.0px 0.0px 0.0px 36.0px; font: 11.0px Helvetica; -webkit-text-stroke: #000000}
+    p.p22 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Courier; color: #587647; background-color: #202020}
+    p.p23 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Courier; color: #99a8ba; background-color: #202020; min-height: 14.0px}
+    p.p24 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Courier; color: #99a8ba; background-color: #202020}
+    p.p25 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Courier; min-height: 14.0px}
+    p.p26 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Menlo; -webkit-text-stroke: #000000; min-height: 14.0px}
+    li.li5 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px Palatino}
+    li.li10 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px Helvetica}
+    span.s1 {font-kerning: none; color: #000000; background-color: #fffffe; -webkit-text-stroke: 0px #000000}
+    span.s2 {font-kerning: none; background-color: #fffffe}
+    span.s3 {font-kerning: none; color: #1d00ff; background-color: #fffffe; -webkit-text-stroke: 0px #1d00ff}
+    span.s4 {font-kerning: none; color: #137646; background-color: #fffffe; -webkit-text-stroke: 0px #137646}
+    span.s5 {color: #bf6426}
+    span.s6 {color: #99a8ba}
+    span.s7 {font-kerning: none}
+    ol.ol1 {list-style-type: decimal}
+    ul.ul1 {list-style-type: disc}
+    ul.ul2 {list-style-type: hyphen}
+  </style>
+</head>
+<body>
+<div style="width: 600px; margin: 0 auto">
+
+<p class="p1">Overview</p>
+<h1 style="margin: 13.0px 0.0px 0.0px 0.0px; font: 18.0px Palatino"><b>System goal</b></h1>
+<p class="p3"><br></p>
+<p class="p4">Goal of the system is to collect temperature measurements from available temperature sensors, which are placed in different rooms in the house. In case, when one of the sensors sends measurement, which inside of backend service will be detected as HIGH or LOW - alarm on monitoring device is rised, if alarms of such sensors are enabled. <span class="Apple-converted-space"> </span></p>
+<p class="p4">Additionally it should store incoming temperature measurements for future analysis, for example to check how temperature was changing during the night, or for example how big were differences in January / June / December.</p>
+<p class="p3"><br></p>
+<h1 style="margin: 13.0px 0.0px 0.0px 0.0px; font: 18.0px Palatino"><b>100 feet view</b></h1>
+<p class="p3"><br></p>
+<p class="p4">System is pretty straightforward when you look at it from the birds view. It is build out of following parts:</p>
+<ul class="ul1">
+  <li class="li5">spring boot app (backend service)</li>
+  <li class="li5">react native client (monitoring/alarming component)</li>
+  <li class="li5">temperature sensors</li>
+  <li class="li5">administration client (via thymleaf templates)</li>
+</ul>
+<p class="p3"><br></p>
+<p class="p4"><img src="Images/project_overview.png" width="100%" alt="Image"></p>
+<p class="p3"><br></p>
+<h1 style="margin: 13.0px 0.0px 0.0px 0.0px; font: 18.0px Palatino"><b>Spring boot app / server</b></h1>
+<p class="p3"><br></p>
+<p class="p4">Is the heart of gathering, processing and providing information for peripherals. Main responsibilities:<span class="Apple-converted-space"> </span></p>
+<ul class="ul1">
+  <li class="li5">gathering sensors measurements</li>
+  <li class="li5">providing administration panel (via thymleaf templates)</li>
+  <li class="li5">exposing REST api for simple clients</li>
+  <li class="li5">exposing STOMP over web socket channels for subscriptions for clients, which want to update measurement information instantly</li>
+  <li class="li5">communicating with mongodb</li>
+  <li class="li5">security of all exposed parts (only authenticated and authorized parties are allowed to perform specific actions)</li>
+</ul>
+<p class="p6"><br></p>
+<h1 style="margin: 13.0px 0.0px 0.0px 0.0px; font: 18.0px Palatino"><b>React native client</b></h1>
+<p class="p3"><br></p>
+<p class="p4">It’s a simple peripheral application, which only reads data from backend and eventually alarms HIGH/LOW temperatures in form of vibrations. Main responsibilities:</p>
+<ul class="ul1">
+  <li class="li5">presenting data to user in human readable way</li>
+  <li class="li5">reacting on alerts (HIGH or LOW level measurements) i.e. rising alarms, when needed</li>
+</ul>
+<p class="p6"><br></p>
+<h1 style="margin: 13.0px 0.0px 0.0px 0.0px; font: 18.0px Palatino"><b>Temperature sensors</b></h1>
+<p class="p3"><br></p>
+<p class="p4">Simple electronic components combined into one unit, which sends measured temperature to defined REST endpoint (implemented in spring boot app). Main responsibilities:</p>
+<ul class="ul1">
+  <li class="li5">stay alive</li>
+  <li class="li5">measure temperature</li>
+  <li class="li5">sends measured temperature to specified REST endpoint in spring boot app</li>
+</ul>
+<p class="p6"><br></p>
+<h1 style="margin: 13.0px 0.0px 0.0px 0.0px; font: 18.0px Palatino"><b>Admin component</b></h1>
+<p class="p3"><br></p>
+<p class="p4">Small graphical management tool, integrated into backend, based on tymleaf templates. Main responsibilities:</p>
+<ul class="ul1">
+  <li class="li5">maintenance of sensors and their measurements</li>
+  <li class="li5">viewing collected data in human readable way<span class="Apple-converted-space"> </span></li>
+</ul>
+<p class="p7"><br></p>
+<p class="p1">Sources</p>
+<p class="p3"><br></p>
+<h1 style="margin: 13.0px 0.0px 0.0px 0.0px; font: 18.0px Palatino"><b>Spring boot app / server</b></h1>
+<p class="p3"><br></p>
+<p class="p4">GitHub: <a href="https://github.com/maxzuraw/cbn-server-atlas-hackaton.git"><i>https://github.com/maxzuraw/cbn-server-atlas-hackaton.git</i></a><i><span class="Apple-converted-space"> </span></i></p>
+<p class="p3"><i></i><br></p>
+<h1 style="margin: 13.0px 0.0px 0.0px 0.0px; font: 18.0px Palatino"><b>React native app / client</b></h1>
+<p class="p3"><br></p>
+<p class="p4">GitHub: <a href="https://github.com/maxzuraw/cbn-mobile-atlas-hackaton.git"><i>https://github.com/maxzuraw/cbn-mobile-atlas-hackaton.git</i></a><i><span class="Apple-converted-space"> </span></i></p>
+<p class="p4">Expo link to android build:<i> </i><a href="https://expo.dev/@l0cke/cbn-mobile"><i>https://expo.dev/@l0cke/cbn-mobile</i></a></p>
+<p class="p3"><br></p>
+<p class="p1">Spring boot app / server</p>
+<p class="p3"><br></p>
+<h1 style="margin: 13.0px 0.0px 0.0px 0.0px; font: 18.0px Palatino"><b>Local installation</b></h1>
+<p class="p3"><br></p>
+<h2 style="margin: 13.0px 0.0px 0.0px 0.0px; font: 13.0px Palatino"><b>Prerequisites</b></h2>
+<p class="p3"><br></p>
+<p class="p4">To easily start spring boot app, you have to install on your machine:</p>
+<p class="p3"><br></p>
+<ul class="ul1">
+  <li class="li5">docker</li>
+  <li class="li5">docker-compose</li>
+</ul>
+<p class="p6"><br></p>
+<h2 style="margin: 13.0px 0.0px 0.0px 0.0px; font: 13.0px Palatino"><b>Starting app</b></h2>
+<p class="p3"><br></p>
+<p class="p4">Repository contains 3 bash scripts:</p>
+<p class="p3"><br></p>
+<ul class="ul1">
+  <li class="li5">rebuildcbn.sh</li>
+  <li class="li5">startservice.sh</li>
+  <li class="li5">stopservice.sh</li>
+</ul>
+<p class="p6"><br></p>
+<p class="p4">Running:</p>
+<p class="p3"><br></p>
+<p class="p9">$ rebuildcbn.sh</p>
+<p class="p3"><br></p>
+<p class="p4">Or</p>
+<p class="p3"><br></p>
+<p class="p9">$ startservice.sh</p>
+<p class="p3"><br></p>
+<p class="p4">One can start all needed services defined in docker-compose.yaml file, which are:</p>
+<p class="p3"><br></p>
+<ul class="ul1">
+  <li class="li5">mongo</li>
+  <li class="li5">mongo-express</li>
+  <li class="li5">cbn</li>
+</ul>
+<p class="p6"><br></p>
+<p class="p4">Mongo service is the latest mongodb docker image.</p>
+<p class="p4">Mongo-express is simple GUI for navigate over mongo databases and collections</p>
+<p class="p4">Cbn is our cold-bedroom-notifier spring boot app.<span class="Apple-converted-space"> </span></p>
+<p class="p3"><br></p>
+<p class="p4">After docker-compose will finish building cbn service, after launch, you can open your browser and find started services as follows:</p>
+<p class="p3"><br></p>
+<ul class="ul1">
+  <li class="li5">mongo = http://localhost:27017</li>
+  <li class="li5">mongo-express = http://localhost:8888</li>
+  <li class="li5">cbn = <a href="http://localhost:8181">http://localhost:8181</a><span class="Apple-converted-space"> </span></li>
+</ul>
+<p class="p6"><br></p>
+<h1 style="margin: 13.0px 0.0px 0.0px 0.0px; font: 18.0px Palatino"><b>Installing on server behind apache with configured ssl certificate from LetsEncrypt as subdomain service</b></h1>
+<p class="p3"><br></p>
+<ol class="ol1">
+  <li class="li5">First login to your server, wherever it is.<span class="Apple-converted-space"> </span></li>
+  <li class="li5">Clone GitHub repository mentioned in Sources section</li>
+  <li class="li5">Enter command:<span class="Apple-converted-space"> </span>
+  <ul class="ul2">
+    <li class="li10">$ startservice.sh<span class="Apple-converted-space"> </span></li>
+  </ul></li>
+  <li class="li5">Wait until build finishes and docker starts all configured services</li>
+  <li class="li5">Enable proxy pass and proxy pass reverse</li>
+  <li class="li5">Open your apache configuration file:<span class="Apple-converted-space"> </span>
+  <ul class="ul2">
+    <li class="li10">sudo nano /etc/apache2/sites-available/<a href="http://sensors.mysuperpage.com">sensors.mysuperpage.com</a>-le-ssl.conf</li>
+  </ul></li>
+  <li class="li5">Define ProxyPass, like this:
+  <ul class="ul2">
+    <li class="li10">ProxyPass / http://localhost:8181/</li>
+    <li class="li10">ProxyPassReverse / <a href="http://localhost:8181/">http://localhost:8181/</a></li>
+  </ul></li>
+  <li class="li5">Restart apache2</li>
+</ol>
+<p class="p3"><br></p>
+<p class="p4">Example of full subdomain conf file:</p>
+<p class="p3"><br></p>
+<p class="p9">&lt;IfModule mod_ssl.c&gt;</p>
+<p class="p9">&lt;VirtualHost *:443&gt;</p>
+<p class="p11"><br></p>
+<p class="p9"><span class="Apple-converted-space">        </span>ServerAdmin webmaster@localhost</p>
+<p class="p11"><br></p>
+<p class="p9"><span class="Apple-converted-space">        </span>ServerName sensors.mysuperpage.com</p>
+<p class="p9"><span class="Apple-converted-space">        </span>ServerAlias sensors.mysuperpage.com</p>
+<p class="p11"><br></p>
+<p class="p9"># <span class="Apple-converted-space">      </span>ProxyPreserveHost On</p>
+<p class="p9"><span class="Apple-converted-space">        </span>ProxyPass / http://localhost:8181/</p>
+<p class="p9"><span class="Apple-converted-space">        </span>ProxyPassReverse / http://localhost:8181/</p>
+<p class="p11"><br></p>
+<p class="p9"><span class="Apple-converted-space">        </span>ErrorLog ${APACHE_LOG_DIR}/error.log</p>
+<p class="p9"><span class="Apple-converted-space">        </span>CustomLog ${APACHE_LOG_DIR}/access.log combined</p>
+<p class="p11"><br></p>
+<p class="p11"><br></p>
+<p class="p9">SSLCertificateFile /etc/letsencrypt/live/sensors.mysuperpage.com/fullchain.pem</p>
+<p class="p9">SSLCertificateKeyFile /etc/letsencrypt/live/sensors.mysuperpage.com/privkey.pem</p>
+<p class="p9">Include /etc/letsencrypt/options-ssl-apache.conf</p>
+<p class="p9">&lt;/VirtualHost&gt;</p>
+<h1 style="margin: 13.0px 0.0px 0.0px 0.0px; font: 18.0px Palatino"><b>Accessing admin<span class="Apple-converted-space"> </span></b></h1>
+<p class="p3"><br></p>
+<p class="p4">As mentioned previously, our administration tool is available under <a href="http://localhost:8181">http://localhost:8181</a><span class="Apple-converted-space">  </span>(or eventually under our configured server, f.e. <a href="https://sensors.mysuperpage.com">https://sensors.mysuperpage.com</a> ).</p>
+<p class="p3"><br></p>
+<p class="p12"><img src="Images/Pasted Graphic 4.png" width="344px" height="233px" alt="Image"></p>
+<p class="p3"><br></p>
+<p class="p4">So, let’s login, as admin (admin:admin) :</p>
+<p class="p3"><br></p>
+<p class="p12"><img src="Images/Pasted Graphic 5.png" width="100%" alt="Image"></p>
+<p class="p3"><br></p>
+<p class="p4">You will be redirected directly to page, where admin can define sensors.<span class="Apple-converted-space"> </span></p>
+<p class="p3"><br></p>
+<h2 style="margin: 13.0px 0.0px 0.0px 0.0px; font: 13.0px Palatino"><b>Adding new sensor</b></h2>
+<p class="p3"><br></p>
+<p class="p4">Let’s define new sensor as follows:</p>
+<p class="p3"><br></p>
+<p class="p12"><img src="Images/Pasted Graphic 2.png" width="100%" alt="Image"></p>
+<p class="p3"><br></p>
+<p class="p4">Here we say, that alerts should be enabled, when measurements from this sensor overlaps min or max value.</p>
+<p class="p4">At this stage, dashboard is still inaccessible, since there are no measurements. Let’s create one, by simulating sensor with curl:</p>
+<p class="p3"><br></p>
+<p class="p13"><span class="s1">curl --location --request POST </span><span class="s2">'http://localhost:8080/api/temperature'</span><span class="s1"> \</span></p>
+<p class="p13"><span class="s1">--header </span><span class="s2">'Authorization: Basic c2Vuc29yOnNlbnNvcg=='</span><span class="s1"> \</span></p>
+<p class="p13"><span class="s1">--header </span><span class="s2">'Content-Type: application/json'</span><span class="s1"> \</span></p>
+<p class="p14"><span class="s2">--data-raw </span><span class="s3">'{</span></p>
+<p class="p13"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s2">"sensor"</span><span class="s1">:</span><span class="s2">"bedroom"</span><span class="s1">,</span></p>
+<p class="p13"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s2">"value"</span><span class="s1">: </span><span class="s4">21.59</span></p>
+<p class="p14"><span class="s2">}</span><span class="s3">'</span></p>
+<p class="p15"><br></p>
+<p class="p16">Let’s create another one measurement:</p>
+<p class="p17"><br></p>
+<p class="p13"><span class="s1">curl --location --request POST </span><span class="s2">'http://localhost:8080/api/temperature'</span><span class="s1"> \</span></p>
+<p class="p13"><span class="s1">--header </span><span class="s2">'Authorization: Basic c2Vuc29yOnNlbnNvcg=='</span><span class="s1"> \</span></p>
+<p class="p13"><span class="s1">--header </span><span class="s2">'Content-Type: application/json'</span><span class="s1"> \</span></p>
+<p class="p14"><span class="s2">--data-raw </span><span class="s3">'{</span></p>
+<p class="p13"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s2">"sensor"</span><span class="s1">:</span><span class="s2">"bedroom"</span><span class="s1">,</span></p>
+<p class="p13"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s2">"value"</span><span class="s1">: </span><span class="s4">20.44</span></p>
+<p class="p14"><span class="s2">}</span><span class="s3">'</span></p>
+<p class="p15"><br></p>
+<p class="p17"><br></p>
+<h2 style="margin: 13.0px 0.0px 0.0px 0.0px; font: 13.0px Palatino; -webkit-text-stroke: #000000"><b>Dashboard</b></h2>
+<p class="p17"><br></p>
+<p class="p16">On the dashboard we see last measurement of sensors and small charts with last 10 measurements for each sensor defined in system:</p>
+<p class="p17"><br></p>
+<p class="p19"><img src="Images/Pasted Graphic 3.png" width="100%" alt="Image"></p>
+<p class="p17"><br></p>
+<p class="p16">Currently we don’t see any alarms, even if they are enabled. But just wait until we will get to Client section.<span class="Apple-converted-space"> </span></p>
+<p class="p17"><br></p>
+<h1 style="margin: 13.0px 0.0px 0.0px 0.0px; font: 18.0px Palatino; -webkit-text-stroke: #000000"><b>Events services</b></h1>
+<p class="p17"><br></p>
+<p class="p16">What’s the point with events inside server? Idea is, that whenever sensor reports measurements, and server processes it (decides if HIGH / LOW or NORMAL level is set), then data get’s published to components, which are exposed as subscription channel (STOMP over web sockets). It allows the client to receive „fresh” new data and update it’s state instantly, as the data comes to server.<span class="Apple-converted-space"> </span></p>
+<p class="p17"><br></p>
+<p class="p16">In case measurements is inside defined ranges (between min/max values), following data get’s published to subscription channel:</p>
+<p class="p17"><br></p>
+<p class="p21">{"sensor":"bedroom","value":21.59,"createdOn":"2021-12-31T21:41:51.071967+01:00","level":"NORMAL"}</p>
+<p class="p17"><br></p>
+<p class="p16">Level is „NORMAL”.</p>
+<p class="p17"><br></p>
+<p class="p16">In case measurements exceeds min or max, values get corresponding level:<span class="Apple-converted-space"> </span></p>
+<p class="p17"><br></p>
+<p class="p21">{"sensor":"bedroom","value":20.44,"createdOn":"2021-12-31T21:42:29.316839+01:00","level":"LOW"}</p>
+<p class="p17"><br></p>
+<p class="p16">Level is „LOW”, when min is exceeded.</p>
+<p class="p16">In case when value exceeds max, level gets „HIGH” flag.</p>
+<p class="p17"><br></p>
+<p class="p1">Temperature sensors</p>
+<p class="p3"><br></p>
+<p class="p4">Sensors are build on ESP8266 boards with DS18B20 temperature sensor. Building temperature sensor is pretty easy, especially when following pretty good todos just like tutorials like this: <a href="https://randomnerdtutorials.com/esp8266-ds18b20-temperature-sensor-web-server-with-arduino-ide/">https://randomnerdtutorials.com/esp8266-ds18b20-temperature-sensor-web-server-with-arduino-ide/</a> .</p>
+<p class="p3"><br></p>
+<h1 style="margin: 13.0px 0.0px 0.0px 0.0px; font: 18.0px Palatino"><b>Using https</b></h1>
+<p class="p4">It’s a bit tricky, when we want to send temperature measurements to https server. You will have to copy SHA-1 fingerprint from certificate information. Then use it with HttpsClient inside Arduino code. Please take a look at following fragment:</p>
+<p class="p3"><br></p>
+<p class="p22"><span class="s5">const char</span><span class="s6"> fingerprint[] PROGMEM </span><span class="s5">= </span>"6E A8 53 53 63 59 45 B4 9D A2 9E F9 2F 25 6C C8 48 B0 AD 9B"<span class="s6">;</span></p>
+<p class="p23"><br></p>
+<p class="p4">Use it without SHA-1 dashes.</p>
+<p class="p4">And then we have to call:</p>
+<p class="p3"><br></p>
+<p class="p24">httpsClient.setFingerprint(fingerprint);</p>
+<p class="p23"><br></p>
+<p class="p25"><br></p>
+<p class="p25"><br></p>
+<p class="p1">React native app / client</p>
+<p class="p3"><br></p>
+<p class="p4">Client is implemented in react native and expo. It’s main goal is to monitor changes inside rooms and report, when temperature in specific room exceeds acceptable range.<span class="Apple-converted-space"> </span></p>
+<p class="p4">Has 3 main screens:</p>
+<p class="p3"><br></p>
+<ul class="ul1">
+  <li class="li5">console</li>
+  <li class="li5">settings</li>
+  <li class="li5">temperature</li>
+</ul>
+<p class="p6"><br></p>
+<p class="p12"><img src="Images/Pasted Graphic 6.png" width="315px" height="517px" alt="Image"></p>
+<p class="p4">Let’s see, what are they use cases.</p>
+<p class="p3"><br></p>
+<h1 style="margin: 13.0px 0.0px 0.0px 0.0px; font: 18.0px Palatino"><b>Console screen</b></h1>
+<p class="p3"><br></p>
+<p class="p4">Is used for logs overview. Each important event in client application is logged in logs array defined inside log context. Those logs are then shown on this screen.</p>
+<p class="p3"><br></p>
+<h1 style="margin: 13.0px 0.0px 0.0px 0.0px; font: 18.0px Palatino"><b>Settings screen</b></h1>
+<p class="p3"><br></p>
+<p class="p4">Initially it’s not showing much:</p>
+<p class="p3"><br></p>
+<p class="p12"><img src="Images/Pasted Graphic 7.png" width="309px" height="509px" alt="Image"></p>
+<p class="p3"><br></p>
+<p class="p4">But click the green + button in the header…</p>
+<p class="p3"><br></p>
+<p class="p4">Let’s define new session, like this for example:</p>
+<p class="p3"><br></p>
+<p class="p12"><img src="Images/Pasted Graphic 8.png" width="311px" height="511px" alt="Image"></p>
+<p class="p3"><br></p>
+<p class="p4">And store it (by pressing Save button) - session will be stored in local sqlite database.</p>
+<p class="p3"><br></p>
+<p class="p12"><img src="Images/Pasted Graphic 9.png" width="307px" height="165px" alt="Image"></p>
+<p class="p3"><br></p>
+<p class="p4">Clicking the button opens modal dialog:</p>
+<p class="p3"><br></p>
+<p class="p12"><img src="Images/Pasted Graphic 10.png" width="313px" height="370px" alt="Image"></p>
+<p class="p3"><br></p>
+<p class="p4">Click „Connect” button.</p>
+<p class="p3"><br></p>
+<p class="p4">We will be redirected to „Temperature” screen:</p>
+<p class="p3"><br></p>
+<p class="p12"><img src="Images/Pasted Graphic 11.png" width="306px" height="514px" alt="Image"></p>
+<p class="p3"><br></p>
+<p class="p4">Connection to server is established, and WebSocket to server is opened. Currently we start with fresh installation. So let’s produce some data. Remember curl commands? Lets generate another one:</p>
+<p class="p3"><br></p>
+<p class="p13"><span class="s1">curl --location --request POST </span><span class="s2">'http://localhost:8080/api/temperature'</span><span class="s1"> \</span></p>
+<p class="p13"><span class="s1">--header </span><span class="s2">'Authorization: Basic c2Vuc29yOnNlbnNvcg=='</span><span class="s1"> \</span></p>
+<p class="p13"><span class="s1">--header </span><span class="s2">'Content-Type: application/json'</span><span class="s1"> \</span></p>
+<p class="p14"><span class="s2">--data-raw </span><span class="s3">'{</span></p>
+<p class="p13"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s2">"sensor"</span><span class="s1">:</span><span class="s2">"bedroom"</span><span class="s1">,</span></p>
+<p class="p13"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s2">"value"</span><span class="s1">: </span><span class="s4">21.44</span></p>
+<p class="p14"><span class="s2">}</span><span class="s3">'</span></p>
+<p class="p26"><span class="s7"></span><br></p>
+<p class="p16">Nów, because client has opened WebSocket channel to the server, it will instantly update presented data:</p>
+<p class="p17"><br></p>
+<p class="p19"><img src="Images/Pasted Graphic 12.png" width="306px" height="497px" alt="Image"></p>
+<p class="p17"><br></p>
+<p class="p16">Let’s send another measurement, this time the one, which exceeds lower measurement:</p>
+<p class="p17"><br></p>
+<p class="p13"><span class="s1">curl --location --request POST </span><span class="s2">'http://localhost:8080/api/temperature'</span><span class="s1"> \</span></p>
+<p class="p13"><span class="s1">--header </span><span class="s2">'Authorization: Basic c2Vuc29yOnNlbnNvcg=='</span><span class="s1"> \</span></p>
+<p class="p13"><span class="s1">--header </span><span class="s2">'Content-Type: application/json'</span><span class="s1"> \</span></p>
+<p class="p14"><span class="s2">--data-raw </span><span class="s3">'{</span></p>
+<p class="p13"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s2">"sensor"</span><span class="s1">:</span><span class="s2">"bedroom"</span><span class="s1">,</span></p>
+<p class="p13"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s2">"value"</span><span class="s1">: </span><span class="s4">20.44</span></p>
+<p class="p14"><span class="s2">}</span><span class="s3">'</span></p>
+<p class="p26"><span class="s7"></span><br></p>
+<p class="p16">Client get’s updated value, and because alerts are enabled on the server for this sensor, we received on the client level: „LOW”:</p>
+<p class="p17"><br></p>
+<p class="p19"><img src="Images/Pasted Graphic 13.png" width="308px" height="494px" alt="Image"></p>
+<p class="p17"><br></p>
+<p class="p16">Alert modal is shown. Click OK:</p>
+<p class="p17"><br></p>
+<p class="p19"><img src="Images/Pasted Graphic 14.png" width="304px" height="493px" alt="Image"></p>
+<p class="p17"><br></p>
+<p class="p16">Take a look at header: Green „vibration” icon is active now. Android phone is vibrating. Click the green „vibration-off” icon. Vibration are off now. Till the next exceeded measurement arrives with WebSocket.<span class="Apple-converted-space"> </span></p>
+<p class="p17"><br></p>
+<p class="p16">Pressing bedroom touchable view, navigates to last 10 measurements of this specific sensor shown in a form of a small linear chart:<span class="Apple-converted-space"> </span></p>
+<p class="p17"><br></p>
+<p class="p19"><img src="Images/Pasted Graphic 15.png" width="306px" height="488px" alt="Image"></p>
+<p class="p17"><br></p>
+<p class="p16">Go back to „Temperatures” screen. On the header there is a red square. It disconnects the client from server and WebSocket channel.<span class="Apple-converted-space"> </span></p>
+<p class="p17"><br></p>
+<p class="p16">And mainly that’s all folks. Please fill free to use the app for your own needs. I am always happy to hear some feedback from you. Thx and godspeed.</p>
+</div>
+</body>
+</html>

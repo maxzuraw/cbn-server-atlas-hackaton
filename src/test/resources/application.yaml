@@ -1,0 +1,16 @@
+spring:
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.mongo.embedded.EmbeddedMongoAutoConfiguration
+  application:
+    name: CBN
+  thymeleaf:
+    prefix: classpath:/templates
+    cache: false
+  data:
+    rest:
+      baseUri: api
+
+graphql:
+  servlet:
+    enabled: false

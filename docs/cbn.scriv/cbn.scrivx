@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ScrivenerProject Identifier="F6A6FBFC-C3C8-4FBB-896D-4CA4C7A8EC51" Version="2.0" Creator="SCRMAC-3.2.3-14869" Device="MacBook-Pro-Maksymilian" Author="" Modified="2022-01-02 15:59:27 +0100" ModID="E49DEC70-5759-4DAF-9277-74DD7D8A437D">
+    <Binder>
+        <BinderItem UUID="0813485F-6B13-4EB7-86AA-F053E5B84DFD" Type="DraftFolder" Created="2021-12-30 18:13:13 +0100" Modified="2021-12-30 18:13:13 +0100">
+            <Title>Draft</Title>
+            <MetaData>
+                <IncludeInCompile>Yes</IncludeInCompile>
+            </MetaData>
+            <Children>
+                <BinderItem UUID="02FD57D6-63DF-476E-A563-460C640F9F1C" Type="Text" Created="2021-12-30 18:13:13 +0100" Modified="2021-12-31 20:14:45 +0100">
+                    <Title>Overview</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>2267,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+                <BinderItem UUID="A42E6483-B752-455D-9F82-1EACCB90E0A9" Type="Text" Created="2021-12-31 17:38:10 +0100" Modified="2022-01-02 15:59:19 +0100">
+                    <Title>Sources</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>33,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+                <BinderItem UUID="0C0F4B3C-E58B-40EA-ACAA-EB43790E1064" Type="Text" Created="2021-12-31 18:22:45 +0100" Modified="2021-12-31 23:25:07 +0100">
+                    <Title>Spring boot app</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>4443,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+                <BinderItem UUID="CE8E8584-5FF1-40FA-8D36-89C0EABA3722" Type="Text" Created="2021-12-31 20:12:42 +0100" Modified="2021-12-31 22:57:13 +0100">
+                    <Title>Temperature sensors</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>762,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+                <BinderItem UUID="2480364E-53B1-424E-BEC4-B8E71C93B974" Type="Text" Created="2021-12-31 18:23:51 +0100" Modified="2022-01-02 11:11:53 +0100">
+                    <Title>Client</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>2211,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+            </Children>
+        </BinderItem>
+        <BinderItem UUID="CACFC271-3BE6-41FB-A008-9A614C132155" Type="ResearchFolder" Created="2021-12-30 18:13:13 +0100" Modified="2021-12-30 18:13:13 +0100">
+            <Title>Research</Title>
+            <MetaData>
+                <IncludeInCompile>Yes</IncludeInCompile>
+            </MetaData>
+        </BinderItem>
+        <BinderItem UUID="A75DBCFB-7928-4D25-A278-05DA0D4D7BF2" Type="TrashFolder" Created="2021-12-30 18:13:13 +0100" Modified="2021-12-30 18:13:13 +0100">
+            <Title>Trash</Title>
+            <MetaData>
+                <IncludeInCompile>Yes</IncludeInCompile>
+            </MetaData>
+            <Children>
+                <BinderItem UUID="791BDF22-6D5E-4A6B-9BEE-F8BF94808633" Type="Text" Created="2021-12-31 18:27:11 +0100" Modified="2021-12-31 21:51:23 +0100">
+                    <Title>Cold bedroom notifier</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>34,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+            </Children>
+        </BinderItem>
+    </Binder>
+    <Collections>
+        <Collection Type="Binder" ID="DAE9770B-ABAA-474E-95F7-86A1253C4EA9" Color="0.112547 0.112547 0.112547">
+            <Title>Binder</Title>
+        </Collection>
+        <Collection Type="RecentSearch" ID="D6B870A6-42E7-4CFC-955C-295640D6759D" Color="0.190666 0.172707 0.216531">
+            <Title>Search Results</Title>
+            <SearchSettings Operator="Any" Type="All" CaseSensitive="No" IgnoreDiacritics="No">?</SearchSettings>
+        </Collection>
+    </Collections>
+    <SectionTypes>
+        <TypeDefinitions>
+            <Type ID="300BECF3-6554-4292-A3F7-F0CA1561E1B8">Heading</Type>
+            <Type ID="2ECA517D-77A1-4FE5-8C41-479DC23BAFE5">Sub-Heading</Type>
+            <Type ID="D883377B-F2E7-4176-B6C1-6BA5B18D471F">Section</Type>
+        </TypeDefinitions>
+        <LevelTypes>
+            <Folders>
+                <Type>300BECF3-6554-4292-A3F7-F0CA1561E1B8</Type>
+            </Folders>
+            <Containers>
+                <Type>D883377B-F2E7-4176-B6C1-6BA5B18D471F</Type>
+            </Containers>
+            <Files>
+                <Type>D883377B-F2E7-4176-B6C1-6BA5B18D471F</Type>
+            </Files>
+        </LevelTypes>
+    </SectionTypes>
+    <LabelSettings>
+        <Title>Label</Title>
+        <DefaultLabelID>-1</DefaultLabelID>
+        <Labels>
+            <Label ID="-1">No Label</Label>
+            <Label ID="0" Color="0.9935 0.701213 0.732586">Red</Label>
+            <Label ID="1" Color="0.995422 0.790951 0.652384">Orange</Label>
+            <Label ID="2" Color="0.997726 0.892729 0.652567">Yellow</Label>
+            <Label ID="3" Color="0.715862 0.948714 0.697688">Green</Label>
+            <Label ID="4" Color="0.702312 0.888273 0.974258">Blue</Label>
+            <Label ID="5" Color="0.957565 0.766751 0.999619">Purple</Label>
+        </Labels>
+    </LabelSettings>
+    <StatusSettings>
+        <Title>Status</Title>
+        <DefaultStatusID>-1</DefaultStatusID>
+        <StatusItems>
+            <Status ID="-1">No Status</Status>
+            <Status ID="0">To Do</Status>
+            <Status ID="1">In Progress</Status>
+            <Status ID="2">First Draft</Status>
+            <Status ID="3">Revised Draft</Status>
+            <Status ID="4">Final Draft</Status>
+            <Status ID="5">Done</Status>
+        </StatusItems>
+    </StatusSettings>
+    <ProjectTargets Notify="No">
+        <DraftTarget Type="Words" CountIncludedOnly="Yes" CurrentCompileGroupOnly="No" Deadline="2021-12-30 18:13:13 +0100" IgnoreDeadline="Yes">0</DraftTarget>
+        <SessionTarget Type="Words" CountDraftOnly="No" AllowNegatives="No" NextResetDate="2022-01-03 01:00:00 +0100" ResetType="Time" ResetTime="01:00" DeterminedFromDeadline="No" WritingDays="" CanWriteOnDeadlineDate="Yes">0</SessionTarget>
+        <PreviousSession Words="20" Characters="203" Date="2022-01-02 15:57:46 +0100"/>
+    </ProjectTargets>
+    <RecentWritingHistory Date="2022-01-02 00:00:00 +0100">
+        <DraftWordCount>-2</DraftWordCount>
+        <DraftCharCount>65</DraftCharCount>
+        <OtherWordCount>0</OtherWordCount>
+        <OtherCharCount>0</OtherCharCount>
+    </RecentWritingHistory>
+    <PrintSettings PaperSize="595.0,842.0" LeftMargin="72.0" RightMargin="72.0" TopMargin="72.0" BottomMargin="72.0" PaperType="iso-a4" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="No" PagesAcross="1" PagesDown="1"/>
+</ScrivenerProject>

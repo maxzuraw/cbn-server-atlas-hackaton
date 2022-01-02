@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SearchIndexes Version="1.0">
+    <Documents>
+        <Document ID="A42E6483-B752-455D-9F82-1EACCB90E0A9">
+            <Title>Sources</Title>
+            <Text>Sources
+
+Spring boot app / server
+
+GitHub: https://github.com/maxzuraw/cbn-server-atlas-hackaton.git 
+
+React native app / client
+
+GitHub: https://github.com/maxzuraw/cbn-mobile-atlas-hackaton.git 
+Expo link to android build: https://expo.dev/@l0cke/cbn-mobile</Text>
+        </Document>
+        <Document ID="2480364E-53B1-424E-BEC4-B8E71C93B974">
+            <Title>Client</Title>
+            <Text>React native app / client
+
+Client is implemented in react native and expo. It’s main goal is to monitor changes inside rooms and report, when temperature in specific room exceeds acceptable range. 
+Has 3 main screens:
+
+	•	console
+	•	settings
+	•	temperature
+
+#
+Let’s see, what are they use cases.
+
+Console screen
+
+Is used for logs overview. Each important event in client application is logged in logs array defined inside log context. Those logs are then shown on this screen.
+
+Settings screen
+
+Initially it’s not showing much:
+
+#
+
+But click the green + button in the header…
+
+Let’s define new session, like this for example:
+
+#
+
+And store it (by pressing Save button) - session will be stored in local sqlite database.
+
+#
+
+Clicking the button opens modal dialog:
+
+#
+
+Click „Connect” button.
+
+We will be redirected to „Temperature” screen:
+
+#
+
+Connection to server is established, and WebSocket to server is opened. Currently we start with fresh installation. So let’s produce some data. Remember curl commands? Lets generate another one:
+
+curl --location --request POST 'http://localhost:8080/api/temperature' \
+--header 'Authorization: Basic c2Vuc29yOnNlbnNvcg==' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "sensor":"bedroom",
+    "value": 21.44
+}'
+
+Nów, because client has opened WebSocket channel to the server, it will instantly update presented data:
+
+#
+
+Let’s send another measurement, this time the one, which exceeds lower measurement:
+
+curl --location --request POST 'http://localhost:8080/api/temperature' \
+--header 'Authorization: Basic c2Vuc29yOnNlbnNvcg==' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "sensor":"bedroom",
+    "value": 20.44
+}'
+
+Client get’s updated value, and because alerts are enabled on the server for this sensor, we received on the client level: „LOW”:
+
+#
+
+Alert modal is shown. Click OK:
+
+#
+
+Take a look at header: Green „vibration” icon is active now. Android phone is vibrating. Click the green „vibration-off” icon. Vibration are off now. Till the next exceeded measurement arrives with WebSocket. 
+
+Pressing bedroom touchable view, navigates to last 10 measurements of this specific sensor shown in a form of a small linear chart: 
+
+#
+
+Go back to „Temperatures” screen. On the header there is a red square. It disconnects the client from server and WebSocket channel. 
+
+And mainly that’s all folks. Please fill free to use the app for your own needs. I am always happy to hear some feedback from you. Thx and godspeed.</Text>
+        </Document>
+        <Document ID="CE8E8584-5FF1-40FA-8D36-89C0EABA3722">
+            <Title>Temperature sensors</Title>
+            <Text>Temperature sensors
+
+Sensors are build on ESP8266 boards with DS18B20 temperature sensor. Building temperature sensor is pretty easy, especially when following pretty good todos just like tutorials like this: https://randomnerdtutorials.com/esp8266-ds18b20-temperature-sensor-web-server-with-arduino-ide/ .
+
+Using https
+It’s a bit tricky, when we want to send temperature measurements to https server. You will have to copy SHA-1 fingerprint from certificate information. Then use it with HttpsClient inside Arduino code. Please take a look at following fragment:
+
+const char fingerprint[] PROGMEM = "6E A8 53 53 63 59 45 B4 9D A2 9E F9 2F 25 6C C8 48 B0 AD 9B";
+
+Use it without SHA-1 dashes.
+And then we have to call:
+
+httpsClient.setFingerprint(fingerprint);
+
+</Text>
+        </Document>
+        <Document ID="0C0F4B3C-E58B-40EA-ACAA-EB43790E1064">
+            <Title>Spring boot app</Title>
+            <Text>Spring boot app / server
+
+Local installation
+
+Prerequisites
+
+To easily start spring boot app, you have to install on your machine:
+
+	•	docker
+	•	docker-compose
+
+Starting app
+
+Repository contains 3 bash scripts:
+
+	•	rebuildcbn.sh
+	•	startservice.sh
+	•	stopservice.sh
+
+Running:
+
+$ rebuildcbn.sh
+
+Or
+
+$ startservice.sh
+
+One can start all needed services defined in docker-compose.yaml file, which are:
+
+	•	mongo
+	•	mongo-express
+	•	cbn
+
+Mongo service is the latest mongodb docker image.
+Mongo-express is simple GUI for navigate over mongo databases and collections
+Cbn is our cold-bedroom-notifier spring boot app. 
+
+After docker-compose will finish building cbn service, after launch, you can open your browser and find started services as follows:
+
+	•	mongo = http://localhost:27017
+	•	mongo-express = http://localhost:8888
+	•	cbn = http://localhost:8181 
+
+Installing on server behind apache with configured ssl certificate from LetsEncrypt as subdomain service
+
+	1.	First login to your server, wherever it is. 
+	2.	Clone GitHub repository mentioned in Sources section
+	3.	Enter command: 
+	⁃	$ startservice.sh 
+	4.	Wait until build finishes and docker starts all configured services
+	5.	Enable proxy pass and proxy pass reverse
+	6.	Open your apache configuration file: 
+	⁃	sudo nano /etc/apache2/sites-available/sensors.mysuperpage.com-le-ssl.conf
+	7.	Define ProxyPass, like this:
+	⁃	ProxyPass / http://localhost:8181/
+	⁃	ProxyPassReverse / http://localhost:8181/
+	8.	Restart apache2
+
+Example of full subdomain conf file:
+
+&lt;IfModule mod_ssl.c&gt;
+&lt;VirtualHost *:443&gt;
+
+        ServerAdmin webmaster@localhost
+
+        ServerName sensors.mysuperpage.com
+        ServerAlias sensors.mysuperpage.com
+
+#       ProxyPreserveHost On
+        ProxyPass / http://localhost:8181/
+        ProxyPassReverse / http://localhost:8181/
+
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+
+SSLCertificateFile /etc/letsencrypt/live/sensors.mysuperpage.com/fullchain.pem
+SSLCertificateKeyFile /etc/letsencrypt/live/sensors.mysuperpage.com/privkey.pem
+Include /etc/letsencrypt/options-ssl-apache.conf
+&lt;/VirtualHost&gt;
+Accessing admin 
+
+As mentioned previously, our administration tool is available under http://localhost:8181  (or eventually under our configured server, f.e. https://sensors.mysuperpage.com ).
+
+#
+
+So, let’s login, as admin (admin:admin) :
+
+#
+
+You will be redirected directly to page, where admin can define sensors. 
+
+Adding new sensor
+
+Let’s define new sensor as follows:
+
+#
+
+Here we say, that alerts should be enabled, when measurements from this sensor overlaps min or max value.
+At this stage, dashboard is still inaccessible, since there are no measurements. Let’s create one, by simulating sensor with curl:
+
+curl --location --request POST 'http://localhost:8080/api/temperature' \
+--header 'Authorization: Basic c2Vuc29yOnNlbnNvcg==' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "sensor":"bedroom",
+    "value": 21.59
+}'
+
+Let’s create another one measurement:
+
+curl --location --request POST 'http://localhost:8080/api/temperature' \
+--header 'Authorization: Basic c2Vuc29yOnNlbnNvcg==' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "sensor":"bedroom",
+    "value": 20.44
+}'
+
+
+Dashboard
+
+On the dashboard we see last measurement of sensors and small charts with last 10 measurements for each sensor defined in system:
+
+#
+
+Currently we don’t see any alarms, even if they are enabled. But just wait until we will get to Client section. 
+
+Events services
+
+What’s the point with events inside server? Idea is, that whenever sensor reports measurements, and server processes it (decides if HIGH / LOW or NORMAL level is set), then data get’s published to components, which are exposed as subscription channel (STOMP over web sockets). It allows the client to receive „fresh” new data and update it’s state instantly, as the data comes to server. 
+
+In case measurements is inside defined ranges (between min/max values), following data get’s published to subscription channel:
+
+{"sensor":"bedroom","value":21.59,"createdOn":"2021-12-31T21:41:51.071967+01:00","level":"NORMAL"}
+
+Level is „NORMAL”.
+
+In case measurements exceeds min or max, values get corresponding level: 
+
+{"sensor":"bedroom","value":20.44,"createdOn":"2021-12-31T21:42:29.316839+01:00","level":"LOW"}
+
+Level is „LOW”, when min is exceeded.
+In case when value exceeds max, level gets „HIGH” flag.</Text>
+        </Document>
+        <Document ID="02FD57D6-63DF-476E-A563-460C640F9F1C">
+            <Title>Overview</Title>
+            <Text>Overview
+System goal
+
+Goal of the system is to collect temperature measurements from available temperature sensors, which are placed in different rooms in the house. In case, when one of the sensors sends measurement, which inside of backend service will be detected as HIGH or LOW - alarm on monitoring device is rised, if alarms of such sensors are enabled.  
+Additionally it should store incoming temperature measurements for future analysis, for example to check how temperature was changing during the night, or for example how big were differences in January / June / December.
+
+100 feet view
+
+System is pretty straightforward when you look at it from the birds view. It is build out of following parts:
+	•	spring boot app (backend service)
+	•	react native client (monitoring/alarming component)
+	•	temperature sensors
+	•	administration client (via thymleaf templates)
+
+#
+
+Spring boot app / server
+
+Is the heart of gathering, processing and providing information for peripherals. Main responsibilities: 
+	•	gathering sensors measurements
+	•	providing administration panel (via thymleaf templates)
+	•	exposing REST api for simple clients
+	•	exposing STOMP over web socket channels for subscriptions for clients, which want to update measurement information instantly
+	•	communicating with mongodb
+	•	security of all exposed parts (only authenticated and authorized parties are allowed to perform specific actions)
+
+React native client
+
+It’s a simple peripheral application, which only reads data from backend and eventually alarms HIGH/LOW temperatures in form of vibrations. Main responsibilities:
+	•	presenting data to user in human readable way
+	•	reacting on alerts (HIGH or LOW level measurements) i.e. rising alarms, when needed
+
+Temperature sensors
+
+Simple electronic components combined into one unit, which sends measured temperature to defined REST endpoint (implemented in spring boot app). Main responsibilities:
+	•	stay alive
+	•	measure temperature
+	•	sends measured temperature to specified REST endpoint in spring boot app
+
+Admin component
+
+Small graphical management tool, integrated into backend, based on tymleaf templates. Main responsibilities:
+	•	maintenance of sensors and their measurements
+	•	viewing collected data in human readable way </Text>
+        </Document>
+        <Document ID="791BDF22-6D5E-4A6B-9BEE-F8BF94808633">
+            <Title>Cold bedroom notifier</Title>
+            <Text>Cold bedroom notifier
+
+Overview	&lt;$p&gt;
+Sources	&lt;$p&gt;
+Spring boot app	&lt;$p&gt;
+Temperature sensors	&lt;$p&gt;
+Client	&lt;$p&gt;</Text>
+        </Document>
+    </Documents>
+</SearchIndexes>

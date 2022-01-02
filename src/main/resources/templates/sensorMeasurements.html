@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+<head>
+    <title>Sensor measurements</title>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" th:inline="javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([[${chartData}]]);
+
+            var options = {
+                title: 'Measurements of ' + [[${rangeData}]],
+                curveType: 'function',
+                legend: { position: 'bottom' }
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+            chart.draw(data, options);
+        }
+    </script>
+</head>
+<body>
+<section layout:fragment="page-content">
+    <div th:if="${measurements == null || measurements.isEmpty()}">
+        No measurements yet.
+    </div>
+
+    <h5 class="text-center" th:text="${sensorsMeasurementsTitle}" th:if="${measurements != null && measurements.size() > 0}">Title</h5>
+
+    <div id="curve_chart" style="height: 500px" th:if="${measurements != null && measurements.size() > 0}"></div>
+
+    <table class="table" th:if="${measurements != null && measurements.size() > 0}">
+        <thead>
+        <tr>
+            <th th:replace="fragments/table :: header('When')"></th>
+            <th th:replace="fragments/table :: header('Value (°C)')"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="measurement : ${measurements}">
+            <td th:replace="fragments/table :: dataWithLocalDate(${measurement.getCreatedOnDate()}, ${measurement.getCreatedOnTime()})"></td>
+            <td th:replace="fragments/table :: data(${measurement.getValue()})"></td>
+        </tr>
+        </tbody>
+    </table>
+    <nav aria-label="Pagination" th:if="${measurementsPage.totalPages gt 0}">
+        <ul class="pagination justify-content-center font-weight-bold">
+            <li class="page-item" th:classappend="${measurementsPage.number eq 0} ? 'disabled'">
+                <a class="page-link"
+                   th:href="@{/sensors/measurements/{sensorName}?page=0(sensorName=${sensorName})}"
+                   aria-label="Previous" title="Previous Page" data-toggle="tooltip">
+                    <span aria-hidden="true">&laquo;&laquo;</span>
+                </a>
+            </li>
+            <li class="page-item" th:classappend="${measurementsPage.number eq 0} ? 'disabled'">
+                <a class="page-link"
+                   th:href="@{/sensors/measurements/{sensorName}?page={id}(sensorName=${sensorName}, id=${measurementsPage.number lt 1 ? 0 : measurementsPage.number - 1})}"
+                   aria-label="Previous" title="Previous Page" data-toggle="tooltip">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li class="page-item justify-content-center font-weight-bold ">
+                <div class="px-2 py-2" th:text="${currentPosition}"> </div>
+            </li>
+            <li class="page-item" th:classappend="${measurementsPage.number + 1 eq measurementsPage.totalPages} ? 'disabled'">
+                <a class="page-link"
+                   th:href="@{/sensors/measurements/{sensorName}?page={id}(sensorName=${sensorName}, id=${measurementsPage.number + 1})}"
+                   aria-label="Next" title="Next Page" data-toggle="tooltip">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+            <li class="page-item" th:classappend="${measurementsPage.number + 1 eq measurementsPage.totalPages} ? 'disabled'">
+                <a class="page-link"
+                   th:href="@{/sensors/measurements/{sensorName}?page={id}(sensorName=${sensorName}, id=${measurementsPage.totalPages - 1})}"
+                   aria-label="Next" title="Next Page" data-toggle="tooltip">
+                    <span aria-hidden="true">&raquo;&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <a th:href="@{/sensors}" class="btn btn-success">Back</a>
+    </div>
+</section>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      layout:decorate="~{layout/layout}">
+<head>
+    <title th:text="${sensorsPageTitle}">Sensors list</title>
+</head>
+<body>
+<section layout:fragment="page-content">
+    <div th:if="${sensorsSettings == null || sensorsSettings.isEmpty()}">
+        No sensor settings available
+    </div>
+
+    <h5 th:text="${sensorsPageTitle}">Title</h5>
+
+    <table class="table" th:if="${sensorsSettings != null && sensorsSettings.size() > 0}">
+        <thead>
+            <tr>
+                <th th:replace="fragments/table :: header('Name')"></th>
+                <th th:replace="fragments/table :: header('Max °C')"></th>
+                <th th:replace="fragments/table :: header('Min °C')"></th>
+                <th th:replace="fragments/table :: header('Alert')"></th>
+                <th th:replace="fragments/table :: header('Actions')"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="settings : ${sensorsSettings}">
+                <td th:replace="fragments/table :: data(${settings.getSensorName()})"></td>
+                <td th:replace="fragments/table :: data(${settings.getMaxValue()})"></td>
+                <td th:replace="fragments/table :: data(${settings.getMinValue()})"></td>
+                <td th:replace="fragments/table :: alertBulb(${settings.getAlertEnabled()})"></td>
+                <td>
+                    <a sec:authorize="isAuthenticated()" th:if="${#authorization.expression('hasRole(''ADMIN'')')}" th:href="@{/admin/sensors/edit/{id}(id=${settings.get_id()})}" class="px-1 text-success"><i class="fas fa-pen-square"></i></a>
+                    <a th:href="@{/sensors/measurements/{sensorName}(sensorName=${settings.getSensorName()})}" class="px-1 text-primary"><i class="fas fa-weight"></i></a>
+                    <a sec:authorize="isAuthenticated()" th:if="${#authorization.expression('hasRole(''ADMIN'')')}" th:href="@{/admin/sensors/delete/{id}(id=${settings.get_id()})}" class="px-1 text-danger"><i class="fas fa-trash-alt"></i></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div sec:authorize="isAuthenticated()" th:if="${#authorization.expression('hasRole(''ADMIN'')')}" class="d-grid gap-2 d-md-flex justify-content-md-start" >
+        <a th:href="@{/admin/sensors/create}" class="btn btn-success">Add new</a>
+    </div>
+</section>
+</body>
+
+</html>

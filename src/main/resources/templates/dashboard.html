@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+<head>
+    <title th:text="${pageTitle}">DASHBOARD</title>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" th:inline="javascript">
+        google.charts.load("current", {packages:['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+
+        let sensors = [[${dashboardData}]];
+        sensors.forEach(item => {
+            console.log(item);
+            google.charts.setOnLoadCallback(() => drawLineCharts(item.ownChartTitle, item.sensorName, item.ownChartElements));
+        })
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([[${mainChartData}]]);
+            var options = {
+                title: "Last temperature measurements overview",
+                subtitle: [[${mainChartSubtitle}]],
+                width: 800,
+                bar: {groupWidth: '95%'},
+                legend: { position: 'left' },
+            };
+            var chart = new google.visualization.ColumnChart(document.getElementById('columnchart_material'));
+            chart.draw(data, options);
+        }
+
+        function drawLineCharts(title, element, chartData) {
+            console.log("calling draw line chart: " + title + ' ' + element);
+            var data = google.visualization.arrayToDataTable(chartData);
+            var options = {
+                title: title,
+                curveType: 'function',
+                legend: { position: 'bottom' }
+            };
+            var chart = new google.visualization.LineChart(document.getElementById("sensor_line_chart__" + element));
+            chart.draw(data, options);
+        }
+    </script>
+
+</head>
+<body>
+<section layout:fragment="page-content">
+
+    <h5 th:text="${pageTitle}">Title</h5>
+
+    <div id="columnchart_material" style="width: 800px; height: 500px;"></div>
+
+    <h5>Last 10 measurements per sensor </h5>
+    <br>
+
+    <th:block th:if="${dashboardData != null && dashboardData.size() > 0}" th:with="partitions=${T(org.apache.commons.collections4.ListUtils).partition(dashboardData, 2)}">
+        <div class="row" th:each="partition: ${partitions}">
+            <div class="col-sm-6" th:each="data: ${partition}">
+                <div th:id="${data.getOwnChartId()}"></div>
+            </div>
+        </div>
+    </th:block>
+</section>
+</body>
+</html>

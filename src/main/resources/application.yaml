@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: CBN
+  thymeleaf:
+    prefix: classpath:/templates
+    cache: false
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
+  data:
+    mongodb:
+      host: ${MONGO_HOST}
+      port: 27017
+      database: cb
+      app-name: cold-bedroom-notifier
+      username: ${MONGO_ROOT_USERNAME}
+      password: ${MONGO_ROOT_PASSWORD}
+      authentication-database: admin
+    web:
+      pageable:
+        default-page-size: 10
+
+graphql:
+  servlet:
+    enabled: ${GRAPHIQL_CLIENT_ENABLED}
+

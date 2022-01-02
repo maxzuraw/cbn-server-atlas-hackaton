@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+<head>
+    <title th:text="${title}">Edit sensor</title>
+</head>
+<body>
+<section layout:fragment="page-content">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title" th:text="${title}"></h5>
+            <form id="sensorSettings-form"
+                th:object="${sensor}"
+                th:action="${action} == 'Save' ? @{/admin/sensors/create} : @{/admin/sensors/edit/{id}(id=${sensor.getId()})}"
+                th:method="post">
+                <div class="mb-3">
+                    <label for="sensorName" class="form-label">Sensor name</label>
+                    <input type="text" th:readonly="${action} == 'Save' ? false : true" class="form-control" id="sensorName" aria-describedby="emailHelp" th:field="*{sensorName}"/>
+                    <div id="emailHelp" class="form-text">Please provide unique sensor name</div>
+                </div>
+                <div class="mb-3">
+                    <label for="maxValue" class="form-label">Max value</label>
+                    <input type="number" step="any" class="form-control" id="maxValue" th:field="*{maxValue}" />
+                </div>
+                <div class="mb-3">
+                    <label for="minValue" class="form-label">Min value</label>
+                    <input type="number" step="any" class="form-control" id="minValue" th:field="*{minValue}"/>
+                </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="alertEnabled" th:field="*{alertEnabled}"/>
+                    <label class="form-check-label" for="alertEnabled">Alert enabled</label>
+                </div>
+                <button type="submit" class="btn btn-success" th:text="${action} == 'Save' ? 'Add' : 'Update'">Submit</button>
+                <a th:href="@{/sensors}" class="btn btn-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
+</section>
+</body>
+
+</html>
